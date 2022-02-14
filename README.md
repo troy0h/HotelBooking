@@ -1,2 +1,9 @@
 # HotelBooking
-Hotel Booking System, made for a uni group project
+Hotel Booking System, made in Java  
+
+## Libraries  
+Uses JavaFX for GUI  
+Uses JDBC for SQL databases  
+
+
+
