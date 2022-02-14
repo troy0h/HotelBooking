@@ -1,4 +1,4 @@
-package com.hotelbooking;
+package com.controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
