@@ -45,37 +45,37 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label alignment="CENTER" layoutX="244.0" layoutY="65.0" prefHeight="45.0" prefWidth="313.0" style="&#10;" text="Login" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="244.0" layoutY="48.0" prefHeight="45.0" prefWidth="313.0" style="&#10;" text="Sign In" textAlignment="CENTER" wrapText="false">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-        <Label alignment="CENTER" layoutX="46.0" layoutY="219.0" prefHeight="45.0" prefWidth="313.0" style="&#10;" text="Username" textAlignment="CENTER" wrapText="false">
+        <Label alignment="CENTER" layoutX="92.0" layoutY="220.0" prefHeight="45.0" prefWidth="221.0" style="&#10;" text="Username" textAlignment="CENTER" wrapText="false">
           <font>
             <Font size="30.0" />
           </font>
         </Label>
-            <TextField fx:id="Username" layoutX="391.0" layoutY="209.0" prefHeight="51.0" prefWidth="371.0">
+            <TextField id="username" fx:id="Username" layoutX="372.0" layoutY="210.0" prefHeight="51.0" prefWidth="371.0">
                <font>
                   <Font size="30.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="46.0" layoutY="313.0" prefHeight="45.0" prefWidth="313.0" style="&#10;" text="Password" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="92.0" layoutY="323.0" prefHeight="45.0" prefWidth="221.0" style="&#10;" text="Password" textAlignment="CENTER" wrapText="false">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <PasswordField fx:id="Password" layoutX="391.0" layoutY="303.0" prefHeight="65.0" prefWidth="371.0">
+            <PasswordField id="password" fx:id="Password" layoutX="372.0" layoutY="313.0" prefHeight="65.0" prefWidth="371.0">
                <font>
                   <Font size="30.0" />
                </font>
             </PasswordField>
-            <Button layoutX="481.0" layoutY="452.0" mnemonicParsing="false" onAction="#loginGoBack" prefHeight="65.0" prefWidth="209.0" text="Go Back">
+            <Button layoutX="465.0" layoutY="459.0" mnemonicParsing="false" onAction="#loginLogIn" prefHeight="65.0" prefWidth="209.0" text="Sign In">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button layoutX="140.0" layoutY="452.0" mnemonicParsing="false" onAction="#loginLogIn" prefHeight="65.0" prefWidth="209.0" text="Log In">
+            <Button layoutX="98.0" layoutY="459.0" mnemonicParsing="false" onAction="#loginGoBack" prefHeight="65.0" prefWidth="209.0" text="Go Back">
                <font>
                   <Font size="30.0" />
                </font>

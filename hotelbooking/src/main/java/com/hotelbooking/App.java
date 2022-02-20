@@ -14,10 +14,12 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-
+    
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 800, 600);
+        stage.setTitle("Welcome!");
+        scene = new Scene(loadFXML("welcome"), 800, 600);
+        stage.setOnCloseRequest(e -> closeProgram());
         stage.setScene(scene);
         stage.show();
     }
@@ -32,6 +34,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
+    }
+
+    public static void closeProgram() {
+        System.exit(0);
     }
 }

@@ -40,42 +40,52 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.LoginController">
+<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.SignupController">
 
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label alignment="CENTER" layoutX="244.0" layoutY="48.0" prefHeight="45.0" prefWidth="313.0" style="&#10;" text="Sign In" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="244.0" layoutY="48.0" prefHeight="45.0" prefWidth="313.0" style="&#10;" text="Sign Up" textAlignment="CENTER" wrapText="false">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-        <Label alignment="CENTER" layoutX="92.0" layoutY="220.0" prefHeight="45.0" prefWidth="221.0" style="&#10;" text="Username" textAlignment="CENTER" wrapText="false">
+        <Label alignment="CENTER" layoutX="92.0" layoutY="165.0" prefHeight="45.0" prefWidth="221.0" style="&#10;" text="Username" textAlignment="CENTER" wrapText="false">
           <font>
             <Font size="30.0" />
           </font>
         </Label>
-            <TextField id="username" fx:id="Username" layoutX="372.0" layoutY="210.0" prefHeight="51.0" prefWidth="371.0">
+            <TextField fx:id="Username" layoutX="372.0" layoutY="155.0" prefHeight="51.0" prefWidth="371.0">
                <font>
                   <Font size="30.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="92.0" layoutY="323.0" prefHeight="45.0" prefWidth="221.0" style="&#10;" text="Password" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="92.0" layoutY="258.0" prefHeight="45.0" prefWidth="221.0" style="&#10;" text="Password" textAlignment="CENTER" wrapText="false">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <PasswordField id="password" fx:id="Password" layoutX="372.0" layoutY="313.0" prefHeight="65.0" prefWidth="371.0">
+            <PasswordField fx:id="Password" layoutX="372.0" layoutY="248.0" prefHeight="65.0" prefWidth="371.0">
                <font>
                   <Font size="30.0" />
                </font>
             </PasswordField>
-            <Button layoutX="465.0" layoutY="459.0" mnemonicParsing="false" onAction="#loginLogIn" prefHeight="65.0" prefWidth="209.0" text="Sign In">
+            <Label alignment="CENTER" layoutX="80.0" layoutY="351.0" prefHeight="45.0" prefWidth="245.0" style="&#10;" text="Confirm Password" textAlignment="CENTER" wrapText="false">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="PasswordConfirm" layoutX="372.0" layoutY="341.0" prefHeight="65.0" prefWidth="371.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="465.0" layoutY="459.0" mnemonicParsing="false" onAction="#signupSignUp" prefHeight="65.0" prefWidth="209.0" text="Sign Up">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button layoutX="98.0" layoutY="459.0" mnemonicParsing="false" onAction="#loginGoBack" prefHeight="65.0" prefWidth="209.0" text="Go Back">
+            <Button layoutX="98.0" layoutY="459.0" mnemonicParsing="false" onAction="#signupGoBack" prefHeight="65.0" prefWidth="209.0" text="Go Back">
                <font>
                   <Font size="30.0" />
                </font>
