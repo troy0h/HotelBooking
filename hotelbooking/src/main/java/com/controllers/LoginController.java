@@ -21,18 +21,22 @@ public class LoginController {
     String dbPassword = "";
 
     @FXML
-    private void loginLogIn() throws IOException {
+    private void loginLogIn() {
         Connection conn = SqlConn.Connect();
+        // Create a new password hash from the given password
         String PassHash = App.getSha256(Password.getText());
 
         try {
+            // Get the line where the username matches the username column
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ?");
             stmt.setString(1, Username.getText());
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
+                // Get the password hash from the database
                 dbPassword = rs.getString(3);
             }
             if (!dbPassword.equals(PassHash)){
+                // If the database password does not equal the hash, the password is incorrect
                 DialogBox.Error("Username or Password does not match");
             }
             else {

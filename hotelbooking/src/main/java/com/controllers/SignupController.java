@@ -37,16 +37,16 @@ public class SignupController {
             boolean valid = (Username.getText() != null) && Username.getText().matches("[A-Za-z0-9_]+");
             // Check against the checks performed above
             if (!valid) 
-                DialogBox.Error("Username is invalid");
+                DialogBox.Error("Username is invalid\nUsername must be alphanumeric");
             // Check if password and confirmation are empty
             else if (Password.getText().equals("") || PasswordConfirm.getText().equals("")) 
-                DialogBox.Error("Password or confirmation are empty");
+                DialogBox.Error("Password or password confirmation are empty");
             // Check if password and confirmation match
             else if (!Password.getText().equals(PasswordConfirm.getText()))
-                DialogBox.Error("Passwords do not match");
+                DialogBox.Error("Password and password confirmation do not match");
             // Check against the database entry checked above
             else if (!rs.next() == false) 
-                DialogBox.Error("Username is already in use");
+                DialogBox.Error("Desired username is already in use");
             // Every check passes
             else {
                 // Get the passwords' hash
