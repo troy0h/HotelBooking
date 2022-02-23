@@ -17,7 +17,10 @@ public class SqlTables {
             String query = "CREATE TABLE IF NOT EXISTS users (" + 
                 "userId integer PRIMARY KEY," + 
                 "username text UNIQUE NOT NULL," + 
-                "password text NOT NULL );";
+                "password text NOT NULL," +
+                "name text NOT NULL," +
+                "isAdmin int NOT NULL );";
+
             stmt.executeUpdate(query);
         }
         catch (Exception ex) {

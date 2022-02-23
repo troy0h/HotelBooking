@@ -36,6 +36,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -50,42 +51,57 @@
                   <Font size="50.0" />
                </font>
             </Label>
-        <Label alignment="CENTER" layoutX="92.0" layoutY="165.0" prefHeight="45.0" prefWidth="221.0" style="&#10;" text="Username" textAlignment="CENTER" wrapText="false">
+        <Label alignment="CENTER" layoutX="135.0" layoutY="138.0" prefHeight="35.0" prefWidth="265.0" style="&#10;" text="Username" textAlignment="CENTER" wrapText="false">
           <font>
-            <Font size="30.0" />
+            <Font size="24.0" />
           </font>
         </Label>
-            <TextField fx:id="Username" layoutX="372.0" layoutY="155.0" prefHeight="51.0" prefWidth="371.0">
+            <TextField id="UsernameBox" fx:id="Username" layoutX="401.0" layoutY="130.0" prefHeight="25.0" prefWidth="313.0" promptText="Username...">
                <font>
-                  <Font size="30.0" />
+                  <Font size="24.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="92.0" layoutY="258.0" prefHeight="45.0" prefWidth="221.0" style="&#10;" text="Password" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="135.0" layoutY="197.0" prefHeight="45.0" prefWidth="265.0" style="&#10;" text="Name" textAlignment="CENTER" wrapText="false">
                <font>
-                  <Font size="30.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <PasswordField fx:id="Password" layoutX="372.0" layoutY="248.0" prefHeight="65.0" prefWidth="371.0">
+            <TextField id="NameBox" fx:id="Name" layoutX="401.0" layoutY="194.0" prefHeight="25.0" prefWidth="313.0" promptText="Name...">
                <font>
-                  <Font size="30.0" />
+                  <Font size="24.0" />
                </font>
-            </PasswordField>
-            <Label alignment="CENTER" layoutX="80.0" layoutY="351.0" prefHeight="45.0" prefWidth="245.0" style="&#10;" text="Confirm Password" textAlignment="CENTER" wrapText="false">
+            </TextField>
+            <Label alignment="CENTER" layoutX="135.0" layoutY="261.0" prefHeight="45.0" prefWidth="265.0" style="&#10;" text="Password" textAlignment="CENTER" wrapText="false">
                <font>
-                  <Font size="30.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <PasswordField fx:id="PasswordConfirm" layoutX="372.0" layoutY="341.0" prefHeight="65.0" prefWidth="371.0">
+            <PasswordField id="PasswordBox" fx:id="Password" layoutX="401.0" layoutY="258.0" prefHeight="51.0" prefWidth="313.0" promptText="Password...">
                <font>
-                  <Font size="30.0" />
+                  <Font size="24.0" />
                </font>
             </PasswordField>
-            <Button layoutX="465.0" layoutY="459.0" mnemonicParsing="false" onAction="#signupSignUp" prefHeight="65.0" prefWidth="209.0" text="Sign Up">
+            <Label alignment="CENTER" layoutX="135.0" layoutY="325.0" prefHeight="45.0" prefWidth="265.0" style="&#10;" text="Confirm Password" textAlignment="CENTER" wrapText="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <PasswordField id="PasswordConfirmBox" fx:id="PasswordConfirm" layoutX="401.0" layoutY="322.0" prefHeight="35.0" prefWidth="313.0" promptText="Confirm Password...">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </PasswordField>
+            <ToggleButton fx:id="IsAdmin" layoutX="316.0" layoutY="388.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="170.0" text="Is an admin?">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </ToggleButton>
+            <Button layoutX="464.0" layoutY="459.0" mnemonicParsing="false" onAction="#signupSignUp" prefHeight="65.0" prefWidth="209.0" text="Sign Up">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button layoutX="98.0" layoutY="459.0" mnemonicParsing="false" onAction="#signupGoBack" prefHeight="65.0" prefWidth="209.0" text="Go Back">
+            <Button layoutX="139.0" layoutY="459.0" mnemonicParsing="false" onAction="#signupGoBack" prefHeight="65.0" prefWidth="209.0" text="Go Back">
                <font>
                   <Font size="30.0" />
                </font>

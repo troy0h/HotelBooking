@@ -11,13 +11,16 @@ import java.sql.ResultSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 
 public class SignupController {
 
     // Get the username, password and password confirmation from their fields
-    @FXML TextField     Username;
-    @FXML PasswordField Password;
-    @FXML PasswordField PasswordConfirm;
+    @FXML private TextField     Username;
+    @FXML private TextField     Name;
+    @FXML private PasswordField Password;
+    @FXML private PasswordField PasswordConfirm;
+    @FXML private ToggleButton  IsAdmin;
 
     boolean userExists = false;
 
@@ -34,9 +37,12 @@ public class SignupController {
 
             // Do some checks on the username
             boolean valid = (Username.getText() != null) && Username.getText().matches("[A-Za-z0-9_]+");
+            boolean valid2 = (Name.getText() != null) && Name.getText().matches("[A-Za-z0-9_]+");
             // Check against the checks performed above
             if (!valid) 
                 DialogBox.Error("Username is invalid\nUsername must be alphanumeric");
+            else if (!valid2)
+                DialogBox.Error("Name is invalid\nName must be alphanumeric");
             // Check if password and confirmation are empty
             else if (Password.getText().equals("") || PasswordConfirm.getText().equals("")) 
                 DialogBox.Error("Password or password confirmation are empty");
@@ -51,10 +57,18 @@ public class SignupController {
                 // Get the passwords' hash
                 String PassHash = App.getSha256(Password.getText());
                 try {
+                    int userAdmin = 0;
+                    if (IsAdmin.isSelected())
+                        userAdmin = 1;
+                    else if (!IsAdmin.isSelected())
+                        userAdmin = 0;
+
                     // Prepare and execute an insert statement
-                    PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
+                    PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password, name, isAdmin) VALUES (?, ?, ?, ?)");
                     stmt.setString(1, Username.getText());
                     stmt.setString(2, PassHash);
+                    stmt.setString(3, Name.getText());
+                    stmt.setInt(4, userAdmin);
                     stmt.executeUpdate();
                 }
                 catch (Exception ex) {
@@ -67,6 +81,7 @@ public class SignupController {
                     DialogBox.Info("Account created successfully");
                     conn.close();
                     App.setRoot("welcome");
+                    
                 }
             }
         }
