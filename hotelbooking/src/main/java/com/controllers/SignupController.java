@@ -4,7 +4,6 @@ import com.hotelbooking.App;
 import com.hotelbooking.DialogBox;
 import com.hotelbooking.sql.SqlConn;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +22,7 @@ public class SignupController {
     boolean userExists = false;
 
     @FXML
-    private void signupSignUp() throws IOException {
+    private void signupSignUp() {
         // Connect to the database
         Connection conn = SqlConn.Connect();
         ResultSet rs;
@@ -78,7 +77,12 @@ public class SignupController {
 
     // Go back to the welcome window
     @FXML
-    private void signupGoBack() throws IOException {
-        App.setRoot("welcome");
+    private void signupGoBack() {
+        try {
+            App.setRoot("welcome");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
     }
 }

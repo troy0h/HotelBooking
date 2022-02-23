@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.security.MessageDigest;
 
 import com.hotelbooking.sql.SqlStart;
@@ -18,7 +17,7 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
 
         /* 
          * Do a first connection to the database; 
@@ -44,13 +43,19 @@ public class App extends Application {
     }
 
     // Change the objects on the window
-    public static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) {
         scene.setRoot(loadFXML(fxml));
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    private static Parent loadFXML(String fxml) {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+        try {
+            return fxmlLoader.load();
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+        return null;
     }
 
     // Ran first on launch, runs the program with given arguments
@@ -70,7 +75,8 @@ public class App extends Application {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(value.getBytes());
             return bytesToHex(md.digest());
-        } catch(Exception ex){
+        } 
+        catch(Exception ex) {
             throw new RuntimeException(ex);
         }
      }

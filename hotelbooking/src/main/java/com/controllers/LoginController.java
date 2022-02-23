@@ -4,7 +4,6 @@ import com.hotelbooking.App;
 import com.hotelbooking.DialogBox;
 import com.hotelbooking.sql.SqlConn;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,7 +49,12 @@ public class LoginController {
 
     // Go back to the welcome window
     @FXML
-    private void loginGoBack() throws IOException {
-        App.setRoot("welcome");
+    private void loginGoBack() {
+        try {
+            App.setRoot("welcome");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
     }
 }

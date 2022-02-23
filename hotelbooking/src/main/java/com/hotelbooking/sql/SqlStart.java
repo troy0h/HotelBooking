@@ -1,6 +1,7 @@
 package com.hotelbooking.sql;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import com.hotelbooking.DialogBox;
 
@@ -15,7 +16,7 @@ public class SqlStart {
             // create a connection to the database
             conn = DriverManager.getConnection(url);           
         } 
-        catch (SQLException ex) {
+        catch (Exception ex) {
             DialogBox.Exception(ex);
         }
         finally {
@@ -26,7 +27,7 @@ public class SqlStart {
                 if (conn != null)
                     conn.close();
             }
-            catch (SQLException ex) {
+            catch (Exception ex) {
                 DialogBox.Exception(ex);
             }
         }
