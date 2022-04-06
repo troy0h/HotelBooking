@@ -7,6 +7,8 @@ module com.hotelbooking {
 
     opens com.hotelbooking to javafx.fxml;
     opens com.controllers to javafx.fxml;
+    opens com.controllers.customer to javafx.fxml;
+    opens com.controllers.staff to javafx.fxml;
     exports com.hotelbooking;
     exports com.controllers;
 }

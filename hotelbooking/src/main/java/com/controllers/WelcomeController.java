@@ -9,9 +9,9 @@ public class WelcomeController {
 
     // Go to login if the Sign In button is clicked
     @FXML
-    private void welcomeSignIn() {
+    private void welcomeCustSignIn() {
         try {
-            App.setRoot("login");
+            App.setRoot("customerLogin");
         } 
         catch (Exception ex) {
             DialogBox.Exception(ex);
@@ -20,9 +20,31 @@ public class WelcomeController {
 
     // Go to sign up if the Sign Up button is clicked
     @FXML
-    private void welcomeSignUp() {
+    private void welcomeCustSignUp() {
         try {
-            App.setRoot("signup");
+            App.setRoot("customerSignup");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
+    // Go to sign up if the Sign Up button is clicked
+    @FXML
+    private void welcomeStaffSignIn() {
+        try {
+            App.setRoot("staffLogin");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
+    // Go to sign up if the Sign Up button is clicked
+    @FXML
+    private void welcomeStaffSignUp() {
+        try {
+            App.setRoot("staffSignup");
         } 
         catch (Exception ex) {
             DialogBox.Exception(ex);

@@ -1,4 +1,4 @@
-package com.controllers;
+package com.controllers.staff;
 
 import com.hotelbooking.App;
 import com.hotelbooking.DialogBox;
@@ -25,7 +25,7 @@ public class SignupController {
     boolean userExists = false;
 
     @FXML
-    private void signupSignUp() {
+    private void staffSignupSignup() {
         // Connect to the database
         Connection conn = SqlConn.Connect();
         ResultSet rs;
@@ -92,7 +92,7 @@ public class SignupController {
 
     // Go back to the welcome window
     @FXML
-    private void signupGoBack() {
+    private void staffSignupGoBack() {
         try {
             App.setRoot("welcome");
         } 

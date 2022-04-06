@@ -32,7 +32,7 @@ public class App extends Application {
         // Set the window title
         stage.setTitle("Welcome!");
         // Set the scene (window file) and size
-        scene = new Scene(loadFXML("welcome"), 800, 600);
+        scene = new Scene(loadFXML("welcome"), 1024, 768);
         // Make window not resizable
         stage.setResizable(false);
         // Add programming for when the window is closed via the X button

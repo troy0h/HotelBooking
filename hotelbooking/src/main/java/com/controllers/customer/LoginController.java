@@ -1,6 +1,6 @@
-package com.controllers;
+package com.controllers.customer;
 
-import com.classes.User;
+import com.classes.Customer;
 import com.hotelbooking.App;
 import com.hotelbooking.DialogBox;
 import com.hotelbooking.sql.SqlConn;
@@ -22,11 +22,11 @@ public class LoginController {
     int adminInt = 0;
 
     @FXML
-    private void loginLogIn() {
+    private void custLoginLogin() {
         Connection conn = SqlConn.Connect();
         // Create a new password hash from the given password
         String PassHash = App.getSha256(Password.getText());
-        User user = new User();
+        Customer user = new Customer();
         user.username = Username.getText();
         user.password = PassHash;
 
@@ -48,11 +48,11 @@ public class LoginController {
             }
             else {
                 if (adminInt == 1)
-                    user.isAdmin = true;
+                    user.isCorpClient = true;
                 else
-                    user.isAdmin = false;
+                    user.isCorpClient = false;
 
-                DialogBox.Info("Successfully signed in\nWelcome, " + user.name + "\nUser is admin?: " + user.isAdmin);
+                DialogBox.Info("Successfully signed in\nWelcome, " + user.name + "\nUser is corp client?: " + user.isCorpClient);
             }
         }
         catch (Exception ex) {
@@ -62,7 +62,7 @@ public class LoginController {
 
     // Go back to the welcome window
     @FXML
-    private void loginGoBack() {
+    private void custLoginGoBack() {
         try {
             App.setRoot("welcome");
         } 
