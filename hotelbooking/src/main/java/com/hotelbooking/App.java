@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 
 import com.hotelbooking.sql.SqlStart;
 
+
 //JavaFX App
 
 public class App extends Application {
@@ -31,6 +32,8 @@ public class App extends Application {
         // Configure the window used for the program
         // Set the window title
         stage.setTitle("Welcome!");
+        // set the icon for the window
+        stage.getIcons().add(new Image("HotelBooking-master\hotelbooking\src\main\resources\com\hotelbooking\icon.png"));
         // Set the scene (window file) and size
         scene = new Scene(loadFXML("welcome"), 1024, 768);
         // Make window not resizable
