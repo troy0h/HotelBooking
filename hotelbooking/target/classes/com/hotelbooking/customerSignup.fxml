@@ -119,7 +119,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <ComboBox fx:id="custSignupPayment" layoutX="743.0" layoutY="296.0" prefHeight="65.0" prefWidth="240.0" promptText="Payment..." />
+            <ComboBox fx:id="custSignupPayment" layoutX="743.0" layoutY="296.0" prefHeight="65.0" prefWidth="240.0" promptText="Payment..." stylesheets="@combo.css" />
             <ToggleButton fx:id="custSignupCorpClient" layoutX="556.0" layoutY="377.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="431.0" text="Corporate Client?">
                <font>
                   <Font size="30.0" />

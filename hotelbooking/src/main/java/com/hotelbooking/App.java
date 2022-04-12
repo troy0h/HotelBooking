@@ -34,7 +34,7 @@ public class App extends Application {
         // Set the window title
         stage.setTitle("Welcome!");
         // Set the icon for the window
-        Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+        Image icon = new Image(getClass().getResourceAsStream("images/icon.png"));
         stage.getIcons().add(icon);
         // Set the scene (window file) and size
         scene = new Scene(loadFXML("welcome"), 1024, 768);

@@ -60,7 +60,7 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="welcomeCustLogin" layoutX="115.0" layoutY="296.0" mnemonicParsing="false" onAction="#welcomeCustSignIn" prefHeight="96.0" prefWidth="382.0" style="-fx-background-color: #EDC9F8;" text="Cusomer Login">
+            <Button fx:id="welcomeCustLogin" layoutX="115.0" layoutY="296.0" mnemonicParsing="false" onAction="#welcomeCustSignIn" prefHeight="96.0" prefWidth="382.0" style="-fx-background-color: #EDC9F8;" text="Customer Login">
                <font>
                   <Font size="45.0" />
                </font>

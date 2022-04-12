@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -16,13 +17,23 @@ import javafx.scene.control.ToggleButton;
 public class SignupController {
 
     // Get the username, password and password confirmation from their fields
-    @FXML private TextField     Username;
-    @FXML private TextField     Name;
-    @FXML private PasswordField Password;
-    @FXML private PasswordField PasswordConfirm;
-    @FXML private ToggleButton  IsAdmin;
+    @FXML private TextField         Username;
+    @FXML private TextField         Name;
+    @FXML private PasswordField     Password;
+    @FXML private PasswordField     PasswordConfirm;
+    @FXML private ToggleButton      IsAdmin;
+    @FXML private ComboBox<String>  custSignupPayment;
 
     boolean userExists = false;
+
+    @FXML
+    protected void initialize() {
+        custSignupPayment.getItems().addAll(
+            "Cash",
+            "Credit Card",
+            "Debit Card"
+        );
+    }
 
     @FXML
     private void custSignupSignup() {

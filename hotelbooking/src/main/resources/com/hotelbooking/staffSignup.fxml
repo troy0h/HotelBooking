@@ -103,7 +103,7 @@
                   <Font size="30.0" />
                </font>
             </PasswordField>
-            <ComboBox fx:id="staffSignupType" layoutX="632.0" layoutY="296.0" prefHeight="65.0" prefWidth="240.0" promptText="Staff Type..." style="-fx-background-color: #EDC9F8;" visibleRowCount="2" />
+            <ComboBox fx:id="staffSignupType" layoutX="632.0" layoutY="296.0" prefHeight="65.0" prefWidth="240.0" promptText="Staff Type..." style="-fx-background-color: #EDC9F8;" stylesheets="@combo.css" />
             <Label layoutX="665.0" layoutY="225.0" text="Type Of Staff">
                <font>
                   <Font size="30.0" />
