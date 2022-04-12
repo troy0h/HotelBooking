@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.security.MessageDigest;
@@ -32,8 +33,9 @@ public class App extends Application {
         // Configure the window used for the program
         // Set the window title
         stage.setTitle("Welcome!");
-        // set the icon for the window
-        stage.getIcons().add(new Image("HotelBooking-master\hotelbooking\src\main\resources\com\hotelbooking\icon.png"));
+        // Set the icon for the window
+        Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+        stage.getIcons().add(icon);
         // Set the scene (window file) and size
         scene = new Scene(loadFXML("welcome"), 1024, 768);
         // Make window not resizable

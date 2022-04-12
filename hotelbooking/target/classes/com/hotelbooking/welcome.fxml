@@ -45,37 +45,42 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
+            <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/background.png" />
+               </image>
+            </ImageView>
             <Label layoutX="47.0" layoutY="34.0" text="Welcome">
                <font>
                   <Font size="80.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@placeholder.png" />
+                  <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="welcomeCustLogin" layoutX="115.0" layoutY="296.0" mnemonicParsing="false" onAction="#welcomeCustSignIn" prefHeight="96.0" prefWidth="382.0" text="Cusomer Login">
+            <Button fx:id="welcomeCustLogin" layoutX="115.0" layoutY="296.0" mnemonicParsing="false" onAction="#welcomeCustSignIn" prefHeight="96.0" prefWidth="382.0" style="-fx-background-color: #EDC9F8;" text="Cusomer Login">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button fx:id="welcomeCustSignup" layoutX="529.0" layoutY="296.0" mnemonicParsing="false" onAction="#welcomeCustSignUp" prefHeight="96.0" prefWidth="411.0" text="Customer Signup">
+            <Button fx:id="welcomeCustSignup" layoutX="529.0" layoutY="296.0" mnemonicParsing="false" onAction="#welcomeCustSignUp" prefHeight="96.0" prefWidth="411.0" style="-fx-background-color: #EDC9F8;" text="Customer Signup">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button fx:id="welcomestaffLogin" layoutX="115.0" layoutY="408.0" mnemonicParsing="false" onAction="#welcomeStaffSignIn" prefHeight="96.0" prefWidth="382.0" text="Staff Login">
+            <Button fx:id="welcomestaffLogin" layoutX="115.0" layoutY="408.0" mnemonicParsing="false" onAction="#welcomeStaffSignIn" prefHeight="96.0" prefWidth="382.0" style="-fx-background-color: #EDC9F8;" text="Staff Login">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button fx:id="welcomeStaffSignup" layoutX="529.0" layoutY="408.0" mnemonicParsing="false" onAction="#welcomeStaffSignUp" prefHeight="96.0" prefWidth="411.0" text="Staff Signup">
+            <Button fx:id="welcomeStaffSignup" layoutX="529.0" layoutY="408.0" mnemonicParsing="false" onAction="#welcomeStaffSignUp" prefHeight="96.0" prefWidth="411.0" style="-fx-background-color: #EDC9F8;" text="Staff Signup">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button layoutX="439.0" layoutY="631.0" mnemonicParsing="false" onAction="#welcomeQuit" text="Quit">
+            <Button layoutX="439.0" layoutY="631.0" mnemonicParsing="false" onAction="#welcomeQuit" style="-fx-background-color: #EDC9F8;" text="Quit" textFill="#404040">
                <font>
                   <Font size="45.0" />
                </font>

@@ -42,27 +42,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.customer.LoginController">
+<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="backgroundhttp://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.customer.LoginController">
 
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
+            <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/background.png" />
+               </image>
+            </ImageView>
             <Label layoutX="47.0" layoutY="34.0" text="Customer Login">
                <font>
                   <Font size="80.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@placeholder.png" />
+                  <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#custLoginGoBack" text="Go Back">
+            <Button layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#custLoginGoBack" style="-fx-background-color: #EDC9F8;" text="Go Back">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button layoutX="275.0" layoutY="626.0" mnemonicParsing="false" onAction="#custLoginLogin" prefHeight="96.0" prefWidth="222.0" text="Log In">
+            <Button layoutX="275.0" layoutY="626.0" mnemonicParsing="false" onAction="#custLoginLogin" prefHeight="96.0" prefWidth="222.0" style="-fx-background-color: #EDC9F8;" text="Log In">
                <font>
                   <Font size="45.0" />
                </font>

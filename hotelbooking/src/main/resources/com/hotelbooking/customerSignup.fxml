@@ -49,14 +49,19 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
+            <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/background.png" />
+               </image>
+            </ImageView>
             <Label layoutX="46.0" layoutY="34.0" text="Customer Signup">
                <font>
                   <Font size="80.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@placeholder.png" />
+                  <Image url="@images/logo.png" />
                </image>
             </ImageView>
             <Button fx:id="custSignupGoBack" layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#custSignupGoBack" text="Go Back">

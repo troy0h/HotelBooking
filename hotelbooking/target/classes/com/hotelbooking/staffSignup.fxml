@@ -48,22 +48,27 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
+            <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/background.png" />
+               </image>
+            </ImageView>
             <Label layoutX="47.0" layoutY="34.0" text="Staff Signup">
                <font>
                   <Font size="80.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@placeholder.png" />
+                  <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffSignupGoBack" text="Go Back">
+            <Button layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffSignupGoBack" style="-fx-background-color: #EDC9F8;" text="Go Back">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button layoutX="275.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffSignupSignup" prefHeight="96.0" prefWidth="222.0" text="Sign Up">
+            <Button layoutX="275.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffSignupSignup" prefHeight="96.0" prefWidth="222.0" style="-fx-background-color: #EDC9F8;" text="Sign Up">
                <font>
                   <Font size="45.0" />
                </font>
@@ -98,7 +103,7 @@
                   <Font size="30.0" />
                </font>
             </PasswordField>
-            <ComboBox fx:id="staffSignupType" layoutX="632.0" layoutY="296.0" prefHeight="65.0" prefWidth="240.0" promptText="Staff Type..." visibleRowCount="2" />
+            <ComboBox fx:id="staffSignupType" layoutX="632.0" layoutY="296.0" prefHeight="65.0" prefWidth="240.0" promptText="Staff Type..." style="-fx-background-color: #EDC9F8;" visibleRowCount="2" />
             <Label layoutX="665.0" layoutY="225.0" text="Type Of Staff">
                <font>
                   <Font size="30.0" />

@@ -52,7 +52,7 @@
             </Label>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@placeholder.png" />
+                  <Image url="@logo.png" />
                </image>
             </ImageView>
             <Button layoutX="529.0" layoutY="626.0" mnemonicParsing="false" text="Go Back">

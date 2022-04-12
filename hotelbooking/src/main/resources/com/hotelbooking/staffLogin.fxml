@@ -42,14 +42,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.staff.LoginController">
+<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.staff.LoginController">
 
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@this%20is%20it2.png" />
+                  <Image url="@images/background.png" />
                </image>
             </ImageView>
             <Label layoutX="47.0" layoutY="34.0" text="Staff Login">
@@ -57,9 +57,9 @@
                   <Font size="80.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="828.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@logo.png" />
+                  <Image url="@images/logo.png" />
                </image>
             </ImageView>
             <Button fx:id="staffLoginGoBack" layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffLoginGoBack" style="-fx-background-color: #EDC9F8;" text="Go Back">
