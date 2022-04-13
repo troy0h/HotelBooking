@@ -1,6 +1,6 @@
 package com.controllers.staff;
 
-import com.classes.Customer;
+import com.classes.Staff;
 import com.hotelbooking.App;
 import com.hotelbooking.DialogBox;
 import com.hotelbooking.sql.SqlConn;
@@ -16,43 +16,44 @@ import javafx.scene.control.TextField;
 public class LoginController {
 
     // Get the username and password from their fields
-    @FXML TextField     Username;
-    @FXML PasswordField Password;
+    @FXML TextField     staffLoginUsername;
+    @FXML PasswordField staffLoginPassword;
     String dbPassword = "";
-    int adminInt = 0;
+    String staffType = "";
 
     @FXML
     private void staffLoginLogin() {
         Connection conn = SqlConn.Connect();
         // Create a new password hash from the given password
-        String PassHash = App.getSha256(Password.getText());
-        Customer user = new Customer();
-        user.username = Username.getText();
-        user.password = PassHash;
+        String PassHash = App.getSha256(staffLoginPassword.getText());
+        Staff staff = new Staff();
+        staff.username = staffLoginUsername.getText();
+        staff.password = PassHash;
 
         try {
             // Get the line where the username matches the username column
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ?");
-            stmt.setString(1, user.username);
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM staff WHERE username = ?");
+            stmt.setString(1, staff.username);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
                 // Get the password hash from the database
                 dbPassword = rs.getString(3);
-                user.name = rs.getString(4);
-                adminInt = rs.getInt(5);
+                staffType = rs.getString(4);
             }
 
-            if (!dbPassword.equals(user.password)){
+            if (!dbPassword.equals(staff.password)){
                 // If the database password does not equal the hash, the password is incorrect
                 DialogBox.Error("Username or Password does not match");
             }
             else {
-                if (adminInt == 1)
-                    user.isCorpClient = true;
+                if (staffType.equals("Receptionist"))
+                    staff.staffType = "Receptionist";
+                else if (staffType.equals("Bar Staff"))
+                    staff.staffType = "Bar";
                 else
-                    user.isCorpClient = false;
+                    staff.staffType = "Restaraunt";
 
-                DialogBox.Info("Successfully signed in\nWelcome, " + user.name + "\nUser is corp client?: " + user.isCorpClient);
+                DialogBox.Info("Successfully signed in\nWelcome, " + staff.username + "\nStaff Type?: " + staff.staffType);
             }
         }
         catch (Exception ex) {

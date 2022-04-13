@@ -7,19 +7,38 @@ import com.hotelbooking.DialogBox;
 
 public class SqlTables {
     static void executeSQL(Connection conn) {
-        createUsersTables(conn);
+        createCustomersTable(conn);
+        createStaffTables(conn);
     }
 
-    static void createUsersTables(Connection conn) {
+    static void createCustomersTable(Connection conn) {
         try {
             Statement stmt = conn.createStatement();
-            // SQL Query to create "users" table
-            String query = "CREATE TABLE IF NOT EXISTS users (" + 
+            // SQL Query to create "customers" table
+            String query = "CREATE TABLE IF NOT EXISTS customers (" + 
                 "userId integer PRIMARY KEY," + 
                 "username text UNIQUE NOT NULL," + 
                 "password text NOT NULL," +
-                "name text NOT NULL," +
-                "isAdmin int NOT NULL );";
+                "email text NOT NULL," +
+                "paymentMethod text NOT NULL," +
+                "corporateClient text NOT NULL );";
+
+            stmt.executeUpdate(query);
+        }
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
+    static void createStaffTables(Connection conn) {
+        try {
+            Statement stmt = conn.createStatement();
+            // SQL Query to create "staff" table
+            String query = "CREATE TABLE IF NOT EXISTS staff (" + 
+                "staffId integer PRIMARY KEY," + 
+                "username text UNIQUE NOT NULL," + 
+                "password text NOT NULL," +
+                "staffType text NOT NULL );";
 
             stmt.executeUpdate(query);
         }
