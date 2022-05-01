@@ -53,8 +53,6 @@ public class LoginController {
                     staff.staffType = "Bar";
                 else
                     staff.staffType = "Restaraunt";
-
-                DialogBox.Info("Successfully signed in\nWelcome, " + staff.username + "\nStaff Type?: " + staff.staffType);
                 
                 // Staff is receptionist
                 if (staff.staffType.equals("Receptionist")) {

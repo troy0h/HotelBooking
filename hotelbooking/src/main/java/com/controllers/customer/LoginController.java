@@ -54,8 +54,7 @@ public class LoginController {
                     cust.isCorpClient = true;
                 else
                     cust.isCorpClient = false;
-
-                DialogBox.Info("Successfully signed in\nWelcome, " + cust.username + "\nPayment method is " + cust.paymentMethod + "\nUser is corp client?: " + cust.isCorpClient);
+                    
                 App.setRoot("customerDashboard");
             }
         }

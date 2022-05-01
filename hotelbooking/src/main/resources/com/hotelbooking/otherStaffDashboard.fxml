@@ -60,7 +60,7 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#custLoginGoBack" style="-fx-background-color: #EDC9F8;" text="Log Out">
+            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#custLoginGoBack" text="Log Out">
                <font>
                   <Font size="45.0" />
                </font>

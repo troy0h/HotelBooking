@@ -40,7 +40,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.staff.otherDashboardController">
+<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.customer.DashboardController">
 
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
@@ -60,12 +60,12 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#custLoginGoBack" style="-fx-background-color: #EDC9F8;" text="Log Out">
+            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#custLoginGoBack" text="Log Out">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Label fx:id="otherStaffDashboardName" layoutX="47.0" layoutY="152.0" text="Welcome, [NAME]">
+            <Label fx:id="customerDashboardName" layoutX="47.0" layoutY="152.0" text="Welcome, [NAME]">
                <font>
                   <Font size="30.0" />
                </font>

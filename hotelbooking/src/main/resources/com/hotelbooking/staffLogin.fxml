@@ -62,12 +62,12 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="staffLoginGoBack" layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffLoginGoBack" style="-fx-background-color: #EDC9F8;" text="Go Back">
+            <Button fx:id="staffLoginGoBack" layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffLoginGoBack" text="Go Back">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button fx:id="staffLoginLogin" layoutX="275.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffLoginLogin" prefHeight="96.0" prefWidth="222.0" style="-fx-background-color: #EDC9F8;" text="Log In">
+            <Button fx:id="staffLoginLogin" layoutX="275.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffLoginLogin" prefHeight="96.0" prefWidth="222.0" text="Log In">
                <font>
                   <Font size="45.0" />
                </font>

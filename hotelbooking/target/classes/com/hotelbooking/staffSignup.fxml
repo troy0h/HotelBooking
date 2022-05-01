@@ -63,12 +63,12 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffSignupGoBack" style="-fx-background-color: #EDC9F8;" text="Go Back">
+            <Button layoutX="529.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffSignupGoBack" text="Go Back">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button layoutX="275.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffSignupSignup" prefHeight="96.0" prefWidth="222.0" style="-fx-background-color: #EDC9F8;" text="Sign Up">
+            <Button layoutX="275.0" layoutY="626.0" mnemonicParsing="false" onAction="#staffSignupSignup" prefHeight="96.0" prefWidth="222.0" text="Sign Up">
                <font>
                   <Font size="45.0" />
                </font>
@@ -103,7 +103,7 @@
                   <Font size="30.0" />
                </font>
             </PasswordField>
-            <ComboBox fx:id="staffSignupType" layoutX="632.0" layoutY="296.0" prefHeight="65.0" prefWidth="240.0" promptText="Staff Type..." style="-fx-background-color: #EDC9F8;" stylesheets="@combo.css" />
+            <ComboBox fx:id="staffSignupType" layoutX="632.0" layoutY="296.0" prefHeight="65.0" prefWidth="240.0" promptText="Staff Type..." stylesheets="@combo.css" />
             <Label layoutX="665.0" layoutY="225.0" text="Type Of Staff">
                <font>
                   <Font size="30.0" />
