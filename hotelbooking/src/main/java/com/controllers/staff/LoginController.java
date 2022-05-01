@@ -21,12 +21,13 @@ public class LoginController {
     String dbPassword = "";
     String staffType = "";
 
+    public static Staff staff = new Staff();
+
     @FXML
     private void staffLoginLogin() {
         Connection conn = SqlConn.Connect();
         // Create a new password hash from the given password
         String PassHash = App.getSha256(staffLoginPassword.getText());
-        Staff staff = new Staff();
         staff.username = staffLoginUsername.getText();
         staff.password = PassHash;
 
@@ -54,6 +55,15 @@ public class LoginController {
                     staff.staffType = "Restaraunt";
 
                 DialogBox.Info("Successfully signed in\nWelcome, " + staff.username + "\nStaff Type?: " + staff.staffType);
+                
+                // Staff is receptionist
+                if (staff.staffType.equals("Receptionist")) {
+                    App.setRoot("receptionDashboard");
+                }
+                // Staff is other staff type
+                else { 
+                    App.setRoot("otherStaffDashboard");
+                }
             }
         }
         catch (Exception ex) {

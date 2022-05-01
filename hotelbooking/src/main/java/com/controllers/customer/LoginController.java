@@ -21,12 +21,14 @@ public class LoginController {
     String dbPassword = "";
     String corpClient = "";
 
+    // Needs to be public to be able to transfer data to dashboard
+    public static Customer cust = new Customer();
+
     @FXML
     private void custLoginLogin() {
         Connection conn = SqlConn.Connect();
         // Create a new password hash from the given password
         String PassHash = App.getSha256(custLoginPassword.getText());
-        Customer cust = new Customer();
         cust.username = custLoginUsername.getText();
         cust.password = PassHash;
 
@@ -54,6 +56,7 @@ public class LoginController {
                     cust.isCorpClient = false;
 
                 DialogBox.Info("Successfully signed in\nWelcome, " + cust.username + "\nPayment method is " + cust.paymentMethod + "\nUser is corp client?: " + cust.isCorpClient);
+                App.setRoot("customerDashboard");
             }
         }
         catch (Exception ex) {

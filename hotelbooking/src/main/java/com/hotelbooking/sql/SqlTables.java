@@ -62,8 +62,8 @@ public class SqlTables {
                 "roomId int NOT NULL," + 
                 "staffId int NOT NULL," + 
                 "customerId int NOT NULL," +
-                "timeOfStart text NOT NULL," + // YYYY-MM-DD HH:MM:SS.SSS
-                "timeOfExit text NOT NULL," +  // YYYY-MM-DD HH:MM:SS.SSS
+                "timeOfStart text NOT NULL," + // YYYY-MM-DD HH:MM:SS
+                "timeOfExit text NOT NULL," +  // YYYY-MM-DD HH:MM:SS
                 "bookingPrice real NOT NULL );";
             stmt.executeUpdate(query);
         }
