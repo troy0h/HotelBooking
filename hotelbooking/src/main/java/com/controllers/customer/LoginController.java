@@ -38,7 +38,8 @@ public class LoginController {
             stmt.setString(1, cust.username);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
-                // Get the password hash from the database
+                // Get the customer information from the database
+                cust.id = rs.getInt(1);
                 dbPassword = rs.getString(3);
                 cust.email = rs.getString(4);
                 cust.paymentMethod = rs.getString(5);

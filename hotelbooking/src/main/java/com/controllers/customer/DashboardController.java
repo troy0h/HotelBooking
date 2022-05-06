@@ -14,16 +14,46 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
+        // Get user's username and add it to the label
         customerDashboardName.setText("Welcome, " + customer.username);
     }
 
-    public void getObject(Customer cust) {
-        customer = cust;
+    // Go to the Make Booking window
+    @FXML
+    private void custDashMakeBooking() {
+        try {
+            App.setRoot("customerMakeBooking");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
+    // Go to the View Booking window
+    @FXML
+    private void custDashViewBooking() {
+        try {
+            App.setRoot("customerViewBooking");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
+    // Go to the Delete Booking window
+    @FXML
+    private void custDashDeleteBooking() {
+        try {
+            App.setRoot("customerDeleteBooking");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
     }
 
     // Go back to the welcome window
     @FXML
-    private void custLoginGoBack() {
+    private void custDashGoBack() {
         try {
             App.setRoot("welcome");
         } 

@@ -60,7 +60,7 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#custLoginGoBack" text="Log Out">
+            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#custDashGoBack" text="Log Out">
                <font>
                   <Font size="45.0" />
                </font>
@@ -70,6 +70,21 @@
                   <Font size="30.0" />
                </font>
             </Label>
+            <Button layoutX="167.0" layoutY="320.0" mnemonicParsing="false" onAction="#custDashMakeBooking" text="Make Booking">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Button>
+            <Button layoutX="338.0" layoutY="432.0" mnemonicParsing="false" onAction="#custDashDeleteBooking" text="Delete Booking">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Button>
+            <Button layoutX="529.0" layoutY="320.0" mnemonicParsing="false" onAction="#custDashViewBooking" text="View Bookings">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Button>
          </children>
     </AnchorPane>
   </children>

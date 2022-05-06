@@ -38,8 +38,9 @@ public class LoginController {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
                 // Get the password hash from the database
+                staff.id = rs.getInt(1);
                 dbPassword = rs.getString(3);
-                staffType = rs.getString(4);
+                staff.staffType = rs.getString(4);
             }
 
             if (!dbPassword.equals(staff.password)){

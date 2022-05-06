@@ -25,9 +25,7 @@ public class SqlTables {
                 "password text NOT NULL," +
                 "email text NOT NULL," +
                 "paymentMethod text NOT NULL," +
-                "corporateClient text NOT NULL," +
-                "totalTab int );";
-
+                "corporateClient text NOT NULL );";
 
             stmt.executeUpdate(query);
         }
@@ -60,10 +58,9 @@ public class SqlTables {
             String query = "CREATE TABLE IF NOT EXISTS bookings (" +
                 "bookingId int PRIMARY KEY," +
                 "roomId int NOT NULL," + 
-                "staffId int NOT NULL," + 
-                "customerId int NOT NULL," +
-                "timeOfStart text NOT NULL," + // YYYY-MM-DD HH:MM:SS
-                "timeOfExit text NOT NULL," +  // YYYY-MM-DD HH:MM:SS
+                "userId int NOT NULL," + 
+                "timeOfStart text NOT NULL," + // YYYY-MM-DD
+                "timeOfExit text NOT NULL," +  // YYYY-MM-DD
                 "bookingPrice real NOT NULL );";
             stmt.executeUpdate(query);
         }
@@ -94,7 +91,8 @@ public class SqlTables {
                 String query = "CREATE TABLE IF NOT EXISTS rooms (" + 
                     "roomId integer PRIMARY KEY," + 
                     "roomNum int UNIQUE NOT NULL," + 
-                    "roomType text NOT NULL );";
+                    "roomType text NOT NULL," +
+                    "isBooked int NOT NULL);";
     
                 stmt.executeUpdate(query);
             }
@@ -105,10 +103,11 @@ public class SqlTables {
             // ... And then populate it
             try {
                 int n = 100;
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO rooms (roomNum, roomType) VALUES (?, ?)");
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO rooms (roomNum, roomType, isBooked) VALUES (?, ?, ?)");
                 while (n <= 109) {
                     stmt.setInt(1, n);
                     stmt.setString(2, "Single");
+                    stmt.setInt(3, 0);
                     stmt.executeUpdate();
                     n += 1;
                 }
@@ -116,6 +115,7 @@ public class SqlTables {
                 while (n <= 209) {
                     stmt.setInt(1, n);
                     stmt.setString(2, "Single");
+                    stmt.setInt(3, 0);
                     stmt.executeUpdate();
                     n += 1;
                 }
@@ -123,6 +123,7 @@ public class SqlTables {
                 while (n <= 309) {
                     stmt.setInt(1, n);
                     stmt.setString(2, "Single");
+                    stmt.setInt(3, 0);
                     stmt.executeUpdate();
                     n += 1;
                 }
@@ -130,6 +131,7 @@ public class SqlTables {
                 while (n <= 409) {
                     stmt.setInt(1, n);
                     stmt.setString(2, "Single");
+                    stmt.setInt(3, 0);
                     stmt.executeUpdate();
                     n += 1;
                 }
@@ -137,6 +139,7 @@ public class SqlTables {
                 while (n <= 509) {
                     stmt.setInt(1, n);
                     stmt.setString(2, "Double");
+                    stmt.setInt(3, 0);
                     stmt.executeUpdate();
                     n += 1;
                 }
@@ -144,6 +147,7 @@ public class SqlTables {
                 while (n <= 609) {
                     stmt.setInt(1, n);
                     stmt.setString(2, "Double");
+                    stmt.setInt(3, 0);
                     stmt.executeUpdate();
                     n += 1;
                 }
@@ -151,6 +155,7 @@ public class SqlTables {
                 while (n <= 709) {
                     stmt.setInt(1, n);
                     stmt.setString(2, "Twin");
+                    stmt.setInt(3, 0);
                     stmt.executeUpdate();
                     n += 1;
                 }
@@ -159,6 +164,7 @@ public class SqlTables {
                 while (n <= 809) {
                     stmt.setInt(1, n);
                     stmt.setString(2, "Twin");
+                    stmt.setInt(3, 0);
                     stmt.executeUpdate();
                     n += 1;
                 }
