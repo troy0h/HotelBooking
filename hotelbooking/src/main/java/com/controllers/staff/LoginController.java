@@ -42,6 +42,7 @@ public class LoginController {
                 dbPassword = rs.getString(3);
                 staff.staffType = rs.getString(4);
             }
+            conn.close();
 
             if (!dbPassword.equals(staff.password)){
                 // If the database password does not equal the hash, the password is incorrect

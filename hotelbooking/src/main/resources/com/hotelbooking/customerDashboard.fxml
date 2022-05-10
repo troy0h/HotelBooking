@@ -70,17 +70,12 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button layoutX="167.0" layoutY="320.0" mnemonicParsing="false" onAction="#custDashMakeBooking" text="Make Booking">
+            <Button layoutX="341.0" layoutY="272.0" mnemonicParsing="false" onAction="#custDashMakeBooking" text="Make Booking">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button layoutX="338.0" layoutY="432.0" mnemonicParsing="false" onAction="#custDashDeleteBooking" text="Delete Booking">
-               <font>
-                  <Font size="45.0" />
-               </font>
-            </Button>
-            <Button layoutX="529.0" layoutY="320.0" mnemonicParsing="false" onAction="#custDashViewBooking" text="View Bookings">
+            <Button layoutX="254.0" layoutY="384.0" mnemonicParsing="false" onAction="#custDashViewBooking" text="View / Delete Bookings">
                <font>
                   <Font size="45.0" />
                </font>

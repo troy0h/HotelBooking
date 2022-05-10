@@ -70,6 +70,7 @@ public class SignupController {
                     stmt.setString(2, PassHash);
                     stmt.setString(3, staffSignupType.getValue());
                     stmt.executeUpdate();
+                    conn.close();
                 }
                 catch (Exception ex) {
                     // If the database entry fails, close the connection and display an exception

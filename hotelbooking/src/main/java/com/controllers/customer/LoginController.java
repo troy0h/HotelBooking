@@ -45,6 +45,7 @@ public class LoginController {
                 cust.paymentMethod = rs.getString(5);
                 corpClient = rs.getString(6);
             }
+            conn.close();
 
             if (!dbPassword.equals(cust.password)){
                 // If the database password does not equal the hash, the password is incorrect

@@ -89,6 +89,7 @@ public class SignupController {
                     stmt.setString(4, custSignupPayment.getValue());
                     stmt.setString(5, corpClient);
                     stmt.executeUpdate();
+                    conn.close();
                 }
                 catch (Exception ex) {
                     // If the database entry fails, close the connection and display an exception

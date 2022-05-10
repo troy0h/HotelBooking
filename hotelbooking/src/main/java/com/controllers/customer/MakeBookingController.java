@@ -113,6 +113,7 @@ public class MakeBookingController {
                 stmt.setString(4, departDate);
                 stmt.setInt(5, totalCost);
                 stmt.executeUpdate();
+                conn.close();
             }
             catch (Exception ex) {
                 DialogBox.Exception(ex);
