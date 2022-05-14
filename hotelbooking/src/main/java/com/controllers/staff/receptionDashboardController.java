@@ -17,9 +17,29 @@ public class receptionDashboardController {
         receptionStaffDashboardName.setText("Welcome, " + staff.username);
     }
 
+    @FXML
+    public void receptionDashboardMakeBooking() {
+        try {
+            App.setRoot("staffMakeBooking");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
+    @FXML
+    public void receptionDashboardViewBooking() {
+        try {
+            App.setRoot("staffViewBooking");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
     // Go back to the welcome window
     @FXML
-    private void custLoginGoBack() {
+    private void receptionDashboardGoBack() {
         try {
             App.setRoot("welcome");
         } 

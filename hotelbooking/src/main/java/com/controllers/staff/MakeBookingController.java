@@ -1,4 +1,4 @@
-package com.controllers.customer;
+package com.controllers.staff;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-import com.classes.Customer;
+import com.classes.Staff;
 import com.hotelbooking.App;
 import com.hotelbooking.DialogBox;
 import com.hotelbooking.sql.SqlConn;
@@ -18,19 +18,19 @@ import javafx.scene.control.TextField;
 
 public class MakeBookingController {
 
-    @FXML ComboBox<String>  custMakeBookingType;
-    @FXML DatePicker        custMakeBookingArrival;
-    @FXML DatePicker        custMakeBookingDepart;
-    @FXML TextField         custMakeBookingCost;
+    @FXML ComboBox<String>  staffMakeBookingType;
+    @FXML DatePicker        staffMakeBookingArrival;
+    @FXML DatePicker        staffMakeBookingDepart;
+    @FXML TextField         staffMakeBookingCost;
 
     private String   comboBoxValue   = "";
     private int      roomCost        = 0;
-    private Customer customer        = LoginController.cust;
+    private Staff staff        = LoginController.staff;
 
     // Populate the combo box with room types
     @FXML
     protected void initialize() {
-        custMakeBookingType.getItems().addAll(
+        staffMakeBookingType.getItems().addAll(
             "Single",
             "Twin",
             "Double"
@@ -39,12 +39,12 @@ public class MakeBookingController {
 
     // Calculate the room's cost
     @FXML
-    private int custMakeBookingEstimate() {
+    private int staffMakeBookingEstimate() {
         // Get dates from date pickers
-        LocalDate arrivalDate = custMakeBookingArrival.getValue();
-        LocalDate departDate  = custMakeBookingDepart.getValue();
+        LocalDate arrivalDate = staffMakeBookingArrival.getValue();
+        LocalDate departDate  = staffMakeBookingDepart.getValue();
         // Get combo box value, and work out the room cost per day
-        comboBoxValue = custMakeBookingType.getValue();
+        comboBoxValue = staffMakeBookingType.getValue();
         if (comboBoxValue.equals("Single"))
             roomCost = 40;
         else if (comboBoxValue.equals("Twin"))
@@ -63,18 +63,18 @@ public class MakeBookingController {
         // Calculate the total cost
         else if (daysBetween > 0) {
             int totalCost = (int) (daysBetween * roomCost);
-            custMakeBookingCost.setText("£" + totalCost);
+            staffMakeBookingCost.setText("£" + totalCost);
             return totalCost;
         }
         return 0;
     }
 
     @FXML
-    private void custMakeBookingConfirm() {
-        int totalCost = custMakeBookingEstimate();
-        String arrivalDate = custMakeBookingArrival.getValue().toString();
-        String departDate  = custMakeBookingDepart.getValue().toString();
-        comboBoxValue = custMakeBookingType.getValue();
+    private void staffMakeBookingConfirm() {
+        int totalCost = staffMakeBookingEstimate();
+        String arrivalDate = staffMakeBookingArrival.getValue().toString();
+        String departDate  = staffMakeBookingDepart.getValue().toString();
+        comboBoxValue = staffMakeBookingType.getValue();
         int roomId = 0;
         
         if (totalCost == 0)
@@ -108,7 +108,7 @@ public class MakeBookingController {
                 // Add the booking
                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO bookings (roomId, userId, timeOfStart, timeOfExit, bookingPrice, checkedIn) VALUES (?, ?, ?, ?, ?, ?)");
                 stmt.setInt(1, roomId);
-                stmt.setInt(2, customer.id);
+                stmt.setInt(2, staff.id);
                 stmt.setString(3, arrivalDate);
                 stmt.setString(4, departDate);
                 stmt.setInt(5, totalCost);
@@ -124,9 +124,9 @@ public class MakeBookingController {
     }
 
     @FXML
-    private void custMakeBookingGoBack() {
+    private void staffMakeBookingGoBack() {
         try {
-            App.setRoot("customerDashboard");
+            App.setRoot("staffDashboard");
         } 
         catch (Exception ex) {
             DialogBox.Exception(ex);

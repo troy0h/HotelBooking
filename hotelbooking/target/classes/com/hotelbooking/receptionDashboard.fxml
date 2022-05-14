@@ -60,7 +60,7 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#custLoginGoBack" text="Log Out">
+            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#receptionDashboardGoBack" text="Log Out">
                <font>
                   <Font size="45.0" />
                </font>
@@ -70,6 +70,16 @@
                   <Font size="30.0" />
                </font>
             </Label>
+            <Button layoutX="63.0" layoutY="254.0" mnemonicParsing="false" onAction="#receptionDashboardMakeBooking" text="Make Booking">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Button>
+            <Button layoutX="441.0" layoutY="254.0" mnemonicParsing="false" onAction="#receptionDashboardViewBooking" text="View / Delete Bookings">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Button>
          </children>
     </AnchorPane>
   </children>

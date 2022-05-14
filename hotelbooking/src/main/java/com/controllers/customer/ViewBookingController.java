@@ -21,6 +21,7 @@ public class ViewBookingController {
     @FXML TextField         custViewBookingType;
     @FXML TextField         custViewBookingNumber;
     @FXML TextField         custViewBookingCost;
+    @FXML TextField         custViewBookingChecked;
 
     private Customer customer = LoginController.cust;
 
@@ -77,6 +78,11 @@ public class ViewBookingController {
                 custViewBookingArrival.setText(arriveDate);
                 custViewBookingDepart.setText(departDate);
                 custViewBookingCost.setText("£" + rs.getLong(6));
+                int checkedIn = rs.getInt(7);
+                if (checkedIn == 0)
+                    custViewBookingChecked.setText("No");
+                else if (checkedIn == 1)
+                    custViewBookingChecked.setText("Yes");
                 // Get more complex info about the room
                 stmt = conn.prepareStatement("SELECT * FROM rooms WHERE roomId = ?");
                 stmt.setInt(1, rs.getInt(2));

@@ -39,7 +39,7 @@ public class SqlTables {
             Statement stmt = conn.createStatement();
             // SQL Query to create "staff" table
             String query = "CREATE TABLE IF NOT EXISTS staff (" + 
-                "staffId int PRIMARY KEY," + 
+                "staffId integer PRIMARY KEY," + 
                 "username text UNIQUE NOT NULL," + 
                 "password text NOT NULL," +
                 "staffType text NOT NULL );";
@@ -56,12 +56,13 @@ public class SqlTables {
         try {
             Statement stmt = conn.createStatement();
             String query = "CREATE TABLE IF NOT EXISTS bookings (" +
-                "bookingId int PRIMARY KEY," +
-                "roomId int NOT NULL," + 
-                "userId int NOT NULL," + 
+                "bookingId integer PRIMARY KEY," +
+                "roomId integer NOT NULL," + 
+                "userId integer NOT NULL," + 
                 "timeOfStart text NOT NULL," + // YYYY-MM-DD
                 "timeOfExit text NOT NULL," +  // YYYY-MM-DD
-                "bookingPrice real NOT NULL );";
+                "bookingPrice real NOT NULL," +
+                "checkedIn integer NOT NULL );";
             stmt.executeUpdate(query);
         }
         catch (Exception ex) {

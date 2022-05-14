@@ -19,7 +19,6 @@ public class LoginController {
     @FXML TextField     staffLoginUsername;
     @FXML PasswordField staffLoginPassword;
     String dbPassword = "";
-    String staffType = "";
 
     public static Staff staff = new Staff();
 
@@ -49,21 +48,12 @@ public class LoginController {
                 DialogBox.Error("Username or Password does not match");
             }
             else {
-                if (staffType.equals("Receptionist"))
-                    staff.staffType = "Receptionist";
-                else if (staffType.equals("Bar Staff"))
-                    staff.staffType = "Bar";
-                else
-                    staff.staffType = "Restaraunt";
-                
-                // Staff is receptionist
-                if (staff.staffType.equals("Receptionist")) {
+                if (staff.staffType.equals("Receptionist"))
                     App.setRoot("receptionDashboard");
-                }
-                // Staff is other staff type
-                else { 
+                else if (staff.staffType.equals("Bar Staff"))
                     App.setRoot("otherStaffDashboard");
-                }
+                else
+                    App.setRoot("otherStaffDashboard");
             }
         }
         catch (Exception ex) {

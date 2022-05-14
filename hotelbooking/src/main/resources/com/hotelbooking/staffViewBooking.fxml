@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.customer.ViewBookingController">
+<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.staff.ViewBookingController">
 
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
@@ -67,7 +67,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="custViewBookingArrival" editable="false" layoutX="251.0" layoutY="360.0" prefHeight="65.0" prefWidth="240.0" promptText="Date...">
+            <TextField fx:id="staffViewBookingArrival" editable="false" layoutX="251.0" layoutY="360.0" prefHeight="65.0" prefWidth="240.0" promptText="Date...">
                <font>
                   <Font size="30.0" />
                </font>
@@ -77,7 +77,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="custViewBookingDepart" editable="false" layoutX="732.0" layoutY="360.0" prefHeight="65.0" prefWidth="240.0" promptText="Date...">
+            <TextField fx:id="staffViewBookingDepart" editable="false" layoutX="732.0" layoutY="360.0" prefHeight="65.0" prefWidth="240.0" promptText="Date...">
                <font>
                   <Font size="30.0" />
                </font>
@@ -87,7 +87,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="custViewBookingType" editable="false" layoutX="251.0" layoutY="441.0" prefHeight="65.0" prefWidth="240.0" promptText="Room Type...">
+            <TextField fx:id="staffViewBookingType" editable="false" layoutX="251.0" layoutY="441.0" prefHeight="65.0" prefWidth="240.0" promptText="Room Type...">
                <font>
                   <Font size="30.0" />
                </font>
@@ -97,18 +97,18 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="custViewBookingCost" editable="false" layoutX="732.0" layoutY="440.0" prefHeight="65.0" prefWidth="240.0" promptText="Cost...">
+            <TextField fx:id="staffViewBookingCost" editable="false" layoutX="732.0" layoutY="440.0" prefHeight="65.0" prefWidth="240.0" promptText="Cost...">
                <font>
                   <Font size="30.0" />
                </font>
             </TextField>
-            <Label layoutX="72.0" layoutY="222.0" text="Select Booking">
+            <Label layoutX="88.0" layoutY="194.0" text="Select Booking">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <ComboBox fx:id="custViewBookingSelected" layoutX="291.0" layoutY="212.0" prefHeight="65.0" prefWidth="240.0" promptText="Booking..." stylesheets="@combo.css" />
-            <Button layoutX="612.0" layoutY="212.0" mnemonicParsing="false" onAction="#custViewBookingView" prefHeight="65.0" prefWidth="240.0" text="View Booking">
+            <ComboBox fx:id="staffViewBookingSelected" layoutX="322.0" layoutY="184.0" prefHeight="65.0" prefWidth="530.0" promptText="Booking..." stylesheets="@combo.css" />
+            <Button layoutX="82.0" layoutY="265.0" mnemonicParsing="false" onAction="#staffViewBookingView" prefHeight="65.0" prefWidth="240.0" text="View Booking">
                <font>
                   <Font size="30.0" />
                </font>
@@ -118,17 +118,17 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="custViewBookingNumber" editable="false" layoutX="251.0" layoutY="522.0" prefHeight="65.0" prefWidth="240.0" promptText="Room Number...">
+            <TextField fx:id="staffViewBookingNumber" editable="false" layoutX="251.0" layoutY="522.0" prefHeight="65.0" prefWidth="240.0" promptText="Room Number...">
                <font>
                   <Font size="30.0" />
                </font>
             </TextField>
-            <Button layoutX="186.0" layoutY="646.0" mnemonicParsing="false" onAction="#custViewBookingDelete" prefHeight="96.0" prefWidth="371.0" text="Delete Booking">
+            <Button layoutX="32.0" layoutY="640.0" mnemonicParsing="false" onAction="#staffViewBookingDelete" prefHeight="96.0" prefWidth="371.0" text="Delete Booking">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button layoutX="603.0" layoutY="646.0" mnemonicParsing="false" onAction="#custViewBookingGoBack" prefHeight="70.0" prefWidth="222.0" text="Go Back">
+            <Button layoutX="411.0" layoutY="640.0" mnemonicParsing="false" onAction="#staffViewBookingCheckin" prefHeight="96.0" prefWidth="351.0" text="Check In / Out">
                <font>
                   <Font size="45.0" />
                </font>
@@ -138,11 +138,26 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="custViewBookingChecked" editable="false" layoutX="732.0" layoutY="524.0" prefHeight="65.0" prefWidth="240.0" promptText="Checked In...">
+            <TextField fx:id="staffViewBookingChecked" editable="false" layoutX="732.0" layoutY="522.0" prefHeight="65.0" prefWidth="240.0" promptText="Checked In...">
                <font>
                   <Font size="30.0" />
                </font>
             </TextField>
+            <Label layoutX="388.0" layoutY="288.0" text="User:">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="staffViewBookingUser" editable="false" layoutX="482.0" layoutY="273.0" prefHeight="65.0" prefWidth="240.0" promptText="User...">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </TextField>
+            <Button layoutX="770.0" layoutY="640.0" mnemonicParsing="false" onAction="#staffViewBookingGoBack" prefHeight="70.0" prefWidth="222.0" text="Go Back">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Button>
          </children>
     </AnchorPane>
   </children>

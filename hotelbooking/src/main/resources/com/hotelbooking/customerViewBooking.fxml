@@ -133,6 +133,16 @@
                   <Font size="45.0" />
                </font>
             </Button>
+            <Label layoutX="546.0" layoutY="537.0" text="Checked In?">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="custViewBookingChecked" editable="false" layoutX="732.0" layoutY="524.0" prefHeight="65.0" prefWidth="240.0" promptText="Checked In...">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </TextField>
          </children>
     </AnchorPane>
   </children>
