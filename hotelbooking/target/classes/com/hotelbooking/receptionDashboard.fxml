@@ -70,12 +70,17 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button layoutX="63.0" layoutY="254.0" mnemonicParsing="false" onAction="#receptionDashboardMakeBooking" text="Make Booking">
+            <Button layoutX="339.0" layoutY="241.0" mnemonicParsing="false" onAction="#receptionDashboardMakeBooking" text="Make Booking">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button layoutX="441.0" layoutY="254.0" mnemonicParsing="false" onAction="#receptionDashboardViewBooking" text="View / Delete Bookings">
+            <Button layoutX="252.0" layoutY="353.0" mnemonicParsing="false" onAction="#receptionDashboardViewBooking" text="View / Delete Bookings">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Button>
+            <Button layoutX="286.0" layoutY="464.0" mnemonicParsing="false" onAction="#receptionDashboardExternalService" text="Get External Service">
                <font>
                   <Font size="45.0" />
                </font>

@@ -30,7 +30,6 @@ public class ViewBookingController {
     String      dropDownOption = "";
     Integer     roomNumber = 0;
     Integer     roomId = 0;
-    String      roomIdStr = "";
     Integer     userId = 0;
     String      userType = "";
     String      username = "";
@@ -40,20 +39,20 @@ public class ViewBookingController {
     // Populate the combo box with bookings made types
     @FXML
     protected void initialize() {
-        Connection conn = SqlConn.Connect();
         try {
+            Connection conn = SqlConn.Connect();
             // Get all bookings
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings");
             ResultSet rs = stmt.executeQuery();
             // While there is a current line:
             while (rs.next()) {
-                // Get the arrival and departure date
+                // Get the arrival and departure date, and room number
+                arriveDate = rs.getString(5);
+                departDate = rs.getString(6);
                 roomId = rs.getInt(2);
-                roomIdStr = String.format("%02d", roomId);
-                arriveDate = rs.getString(4);
-                departDate = rs.getString(5);
-                // Make an entry in the format "NN: YYYY-MM-DD - YYYY-MM-DD"
-                staffBooking = roomIdStr + ": " + arriveDate + " - "  + departDate;
+                roomNumber = getRoomNumber(roomId);
+                // Make an entry in the format "NNN: YYYY-MM-DD - YYYY-MM-DD"
+                staffBooking = roomNumber + ": " + arriveDate + " - "  + departDate;
                 // Add it to the combo box
                 staffViewBookingSelected.getItems().add(staffBooking);
             }
@@ -64,6 +63,38 @@ public class ViewBookingController {
         }
     }
 
+    private int getRoomNumber(Integer roomId) {
+        try {
+            Connection conn = SqlConn.Connect();
+            PreparedStatement stmt = conn.prepareStatement("SELECT roomNum FROM rooms WHERE roomId = ?");
+            stmt.setInt(1, roomId);
+            ResultSet rs = stmt.executeQuery();
+            Integer roomNum = rs.getInt(1);
+            conn.close();
+            return roomNum;
+        }
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+            return 0;
+        }
+    }
+
+    private int getRoomId(Integer roomNum) {
+        try {
+            Connection conn = SqlConn.Connect();
+            PreparedStatement stmt = conn.prepareStatement("SELECT roomId FROM rooms WHERE roomNum = ?");
+            stmt.setInt(1, roomNum);
+            ResultSet rs = stmt.executeQuery();
+            Integer roomId = rs.getInt(1);
+            conn.close();
+            return roomId;
+        }
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+            return 0;
+        }
+    }
+
     @FXML void staffViewBookingView() {
         dropDownOption = staffViewBookingSelected.getValue();
         // If no option is selected in the dropdown, do not proceed
@@ -71,24 +102,23 @@ public class ViewBookingController {
             DialogBox.Error("Please select a booking from the dropdown box");
         else {
             // Get the arrival date and ending date from the dropdown
-            roomIdStr = dropDownOption.substring(0,2);
-            roomId = Integer.parseInt(roomIdStr);
-            arriveDate = dropDownOption.substring(4,14);
+            String roomNumStr = dropDownOption.substring(0,3);
+            Integer roomNum = Integer.parseInt(roomNumStr);
+            roomId = getRoomId(roomNum);
+            arriveDate = dropDownOption.substring(5,15);
             departDate = dropDownOption.substring(dropDownOption.length() - 10);
             try {
                 Connection conn = SqlConn.Connect();
                 // Find the booking in question
-                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings WHERE roomId = ? AND timeOfStart = ? AND timeOfExit = ? AND userType = ?");
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings WHERE roomId = ? AND timeOfStart = ? AND timeOfExit = ?");
                 stmt.setInt(1, roomId);
                 stmt.setString(2, arriveDate);
                 stmt.setString(3, departDate);
-                stmt.setString(4, userType);
                 ResultSet rs = stmt.executeQuery();
-                rs.next();
                 // Display basic information about it
                 staffViewBookingArrival.setText(arriveDate);
                 staffViewBookingDepart.setText(departDate);
-                staffViewBookingCost.setText("£" + rs.getLong(6));
+                staffViewBookingCost.setText("£" + rs.getLong(7));
                 userType = rs.getString(4);
                 roomId = rs.getInt(2);
                 int checkedIn = rs.getInt(8);
@@ -116,6 +146,7 @@ public class ViewBookingController {
                 }
                 ResultSet rs2 = stmt2.executeQuery();
                 username = rs2.getString(2);
+                staffViewBookingUser.setText(username);
                 conn.close();
             }
             catch (Exception ex) {
@@ -145,21 +176,21 @@ public class ViewBookingController {
         else {
             boolean confirm = DialogBox.Confirmation("Are you sure you want to delete this booking?");
             if (confirm == true) {
-                Connection conn = SqlConn.Connect();
                 try {
+                    Connection conn = SqlConn.Connect();
                     // Get the arrival date and ending date from the dropdown
-                    roomIdStr = dropDownOption.substring(0,2);
-                    roomId = Integer.parseInt(roomIdStr);
-                    arriveDate = dropDownOption.substring(4,14);
+                    String roomNumStr = dropDownOption.substring(0,3);
+                    Integer roomNum = Integer.parseInt(roomNumStr);
+                    roomId = getRoomId(roomNum);
+                    arriveDate = dropDownOption.substring(5,15);
                     departDate = dropDownOption.substring(dropDownOption.length() - 10);
                     // Delete the booking from the database
-                    PreparedStatement stmt = conn.prepareStatement("DELETE FROM bookings WHERE roomId AND timeOfStart = ? AND timeOfExit = ? AND userType = ?");
+                    PreparedStatement stmt = conn.prepareStatement("DELETE FROM bookings WHERE roomId = ? AND timeOfStart = ? AND timeOfExit = ? AND userType = ?");
                     stmt.setInt(1, roomId);
                     stmt.setString(2, arriveDate);
                     stmt.setString(3, departDate);
                     stmt.setString(4, userType);
                     stmt.executeUpdate();
-                    conn.close();
                     // Update the room to not be booked anymore
                     stmt = conn.prepareStatement("UPDATE rooms SET isBooked = 0 WHERE roomNum = ?");
                     stmt.setInt(1, roomNumber);
@@ -190,30 +221,32 @@ public class ViewBookingController {
             DialogBox.Error("Please select a booking from the dropdown box");
         else {
             // Get the arrival date and ending date from the dropdown
-            roomIdStr = dropDownOption.substring(0,2);
-            roomId = Integer.parseInt(roomIdStr);
-            arriveDate = dropDownOption.substring(4,14);
+            String roomNumStr = dropDownOption.substring(0,3);
+            Integer roomNum = Integer.parseInt(roomNumStr);
+            roomId = getRoomId(roomNum);
+            arriveDate = dropDownOption.substring(5,15);
             departDate = dropDownOption.substring(dropDownOption.length() - 10);
             try {
                 Connection conn = SqlConn.Connect();
                 // Find the booking in question
-                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings WHERE roomId = ? AND timeOfStart = ? AND timeOfExit = ?");
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings WHERE roomId = ? AND timeOfStart = ? AND timeOfExit = ? AND userType = ?");
                 stmt.setInt(1, roomId);
                 stmt.setString(2, arriveDate);
                 stmt.setString(3, departDate);
+                stmt.setString(4, userType);
                 ResultSet rs = stmt.executeQuery();
                 // Check if they are currently checked in
-                checkedIn = rs.getInt(7);
+                checkedIn = rs.getInt(8);
                 conn.close();
             }
             catch (Exception ex) {
                 DialogBox.Exception(ex);
             }
+            if (checkedIn == 0)
+                toCheckIn = 1;
+            else if (checkedIn == 1)
+                toCheckIn = 0;
             try {
-                if (checkedIn == 0)
-                    toCheckIn = 1;
-                else if (checkedIn == 1)
-                    toCheckIn = 0;
                 Connection conn = SqlConn.Connect();
                 PreparedStatement stmt = conn.prepareStatement("UPDATE bookings SET checkedIn = ? WHERE roomId = ? AND timeOfStart = ? AND timeOfExit = ?");
                 stmt.setInt(1, toCheckIn);
@@ -221,6 +254,7 @@ public class ViewBookingController {
                 stmt.setString(3, arriveDate);
                 stmt.setString(4, departDate);
                 stmt.executeUpdate();
+                conn.close();
                 staffViewBookingView();
             }
             catch (Exception ex) {

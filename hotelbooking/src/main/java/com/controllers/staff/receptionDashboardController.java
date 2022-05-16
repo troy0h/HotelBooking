@@ -37,6 +37,16 @@ public class receptionDashboardController {
         }
     }
 
+    @FXML
+    public void receptionDashboardExternalService() {
+        try {
+            App.setRoot("staffExternalService");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
     // Go back to the welcome window
     @FXML
     private void receptionDashboardGoBack() {

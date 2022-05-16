@@ -23,7 +23,6 @@ public class SqlStart {
             try {
                 // Execute things needed in sqlStatements file
                 SqlTables.executeSQL(conn);
-
                 if (conn != null)
                     conn.close();
             }
