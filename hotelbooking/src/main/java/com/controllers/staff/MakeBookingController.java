@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 
 public class MakeBookingController {
 
@@ -22,10 +23,12 @@ public class MakeBookingController {
     @FXML DatePicker        staffMakeBookingArrival;
     @FXML DatePicker        staffMakeBookingDepart;
     @FXML TextField         staffMakeBookingCost;
+    @FXML ToggleButton      staffMakeBookingCheck;
 
-    private String   comboBoxValue   = "";
-    private int      roomCost        = 0;
-    private Staff staff        = LoginController.staff;
+    private String      comboBoxValue   = "";
+    private int         roomCost        = 0;
+    private Staff       staff           = LoginController.staff;
+    private int         toCheckIn       = 0;
 
     // Populate the combo box with room types
     @FXML
@@ -40,33 +43,39 @@ public class MakeBookingController {
     // Calculate the room's cost
     @FXML
     private int staffMakeBookingEstimate() {
-        // Get dates from date pickers
-        LocalDate arrivalDate = staffMakeBookingArrival.getValue();
-        LocalDate departDate  = staffMakeBookingDepart.getValue();
-        // Get combo box value, and work out the room cost per day
-        comboBoxValue = staffMakeBookingType.getValue();
-        if (comboBoxValue.equals("Single"))
-            roomCost = 40;
-        else if (comboBoxValue.equals("Twin"))
-            roomCost = 50;
-        else if (comboBoxValue.equals("Double"))
-            roomCost = 60;
-        else if (comboBoxValue.equals(""))
-            DialogBox.Error("Please select a room type from the dropdown box");
-        // Multiply the room cost per day by the number of days
-        long daysBetween = ChronoUnit.DAYS.between(arrivalDate, departDate);
-        // If days is 0 (same day arrival and departure), make days 1
-        if (daysBetween == 0)
-            daysBetween = 1;
-        else if (daysBetween < 0)
-            DialogBox.Error("The departure date cannot be before the arrival date");
-        // Calculate the total cost
-        else if (daysBetween > 0) {
-            int totalCost = (int) (daysBetween * roomCost);
-            staffMakeBookingCost.setText("£" + totalCost);
-            return totalCost;
+        try {
+            // Get dates from date pickers
+            LocalDate arrivalDate = staffMakeBookingArrival.getValue();
+            LocalDate departDate  = staffMakeBookingDepart.getValue();
+            // Get combo box value, and work out the room cost per day
+            comboBoxValue = staffMakeBookingType.getValue();
+            if (comboBoxValue.equals("Single"))
+                roomCost = 40;
+            else if (comboBoxValue.equals("Twin"))
+                roomCost = 50;
+            else if (comboBoxValue.equals("Double"))
+                roomCost = 60;
+            else if (comboBoxValue.equals(""))
+                DialogBox.Error("Please select a room type from the dropdown box");
+            // Multiply the room cost per day by the number of days
+            long daysBetween = ChronoUnit.DAYS.between(arrivalDate, departDate);
+            // If days is 0 (same day arrival and departure), make days 1
+            if (daysBetween == 0)
+                daysBetween = 1;
+            else if (daysBetween < 0)
+                DialogBox.Error("The departure date cannot be before the arrival date");
+            // Calculate the total cost
+            else if (daysBetween > 0) {
+                int totalCost = (int) (daysBetween * roomCost);
+                staffMakeBookingCost.setText("£" + totalCost);
+                return totalCost;
+            }
+            return 0;
         }
-        return 0;
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+            return 0;
+        }
     }
 
     @FXML
@@ -76,7 +85,12 @@ public class MakeBookingController {
         String departDate  = staffMakeBookingDepart.getValue().toString();
         comboBoxValue = staffMakeBookingType.getValue();
         int roomId = 0;
-        
+        if (staffMakeBookingCheck.isSelected() == false) {
+            toCheckIn = 0;
+        }
+        else if (staffMakeBookingCheck.isSelected() == true) {
+            toCheckIn = 1;
+        }
         if (totalCost == 0)
             DialogBox.Error("Please enter all appropriate values before making a booking");
         else if (totalCost != 0){
@@ -91,10 +105,8 @@ public class MakeBookingController {
             catch (Exception ex) {
                 DialogBox.Exception(ex);
             }
-            
             if (roomId == 0)
                 DialogBox.Error("Something has gone wrong! \nTry a different room type");
-
             try {
                 // Update the room to show that it is booked
                 PreparedStatement stmt = conn.prepareStatement("UPDATE rooms SET isBooked = 1 WHERE roomId = ?");
@@ -106,13 +118,14 @@ public class MakeBookingController {
             }
             try {
                 // Add the booking
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO bookings (roomId, userId, timeOfStart, timeOfExit, bookingPrice, checkedIn) VALUES (?, ?, ?, ?, ?, ?)");
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO bookings (roomId, userId, userType, timeOfStart, timeOfExit, bookingPrice, checkedIn) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 stmt.setInt(1, roomId);
                 stmt.setInt(2, staff.id);
-                stmt.setString(3, arrivalDate);
-                stmt.setString(4, departDate);
-                stmt.setInt(5, totalCost);
-                stmt.setInt(6, 0);
+                stmt.setString(3, "staff");
+                stmt.setString(4, arrivalDate);
+                stmt.setString(5, departDate);
+                stmt.setInt(6, totalCost);
+                stmt.setInt(7, toCheckIn);
                 stmt.executeUpdate();
                 conn.close();
             }
@@ -126,7 +139,7 @@ public class MakeBookingController {
     @FXML
     private void staffMakeBookingGoBack() {
         try {
-            App.setRoot("staffDashboard");
+            App.setRoot("receptionDashboard");
         } 
         catch (Exception ex) {
             DialogBox.Exception(ex);

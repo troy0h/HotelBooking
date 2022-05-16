@@ -106,13 +106,14 @@ public class MakeBookingController {
             }
             try {
                 // Add the booking
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO bookings (roomId, userId, timeOfStart, timeOfExit, bookingPrice, checkedIn) VALUES (?, ?, ?, ?, ?, ?)");
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO bookings (roomId, userId, userType, timeOfStart, timeOfExit, bookingPrice, checkedIn) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 stmt.setInt(1, roomId);
                 stmt.setInt(2, customer.id);
-                stmt.setString(3, arrivalDate);
-                stmt.setString(4, departDate);
-                stmt.setInt(5, totalCost);
-                stmt.setInt(6, 0);
+                stmt.setString(3, "user");
+                stmt.setString(4, arrivalDate);
+                stmt.setString(5, departDate);
+                stmt.setInt(6, totalCost);
+                stmt.setInt(7, 0);
                 stmt.executeUpdate();
                 conn.close();
             }

@@ -59,6 +59,7 @@ public class SqlTables {
                 "bookingId integer PRIMARY KEY," +
                 "roomId integer NOT NULL," + 
                 "userId integer NOT NULL," + 
+                "userType text NOT NULL," +
                 "timeOfStart text NOT NULL," + // YYYY-MM-DD
                 "timeOfExit text NOT NULL," +  // YYYY-MM-DD
                 "bookingPrice real NOT NULL," +

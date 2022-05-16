@@ -25,11 +25,12 @@ public class ViewBookingController {
 
     private Customer customer = LoginController.cust;
 
-    boolean x = false;
-    String custBooking = "";
-    String arriveDate = "";
-    String departDate = "";
-    String dropDownOption = "";
+    boolean     x = false;
+    String      custBooking = "";
+    String      arriveDate = "";
+    String      departDate = "";
+    String      dropDownOption = "";
+    Integer     roomNum = 0;
 
     // Populate the combo box with bookings made types
     @FXML
@@ -37,14 +38,15 @@ public class ViewBookingController {
         Connection conn = SqlConn.Connect();
         try {
             // Get all bookings made by the user
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings WHERE userId = ?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings WHERE userId = ? AND userType = ?");
             stmt.setInt(1, customer.id);
+            stmt.setString(2, "user");
             ResultSet rs = stmt.executeQuery();
             // While there is a current line:
             while (rs.next()) {
                 // Get the arrival and departure date
-                arriveDate = rs.getString(4);
-                departDate = rs.getString(5);
+                arriveDate = rs.getString(5);
+                departDate = rs.getString(6);
                 // Make an entry in the format "YYYY-MM-DD - YYYY-MM-DD"
                 custBooking = arriveDate + " - "  + departDate;
                 // Add it to the combo box
@@ -69,16 +71,17 @@ public class ViewBookingController {
             departDate = dropDownOption.substring(dropDownOption.length() - 10);
             try {
                 // Find the booking in question
-                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings WHERE userId = ? AND timeOfStart = ? AND timeOfExit = ?");
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bookings WHERE userId = ? AND timeOfStart = ? AND timeOfExit = ? AND userType = ?");
                 stmt.setInt(1, customer.id);
                 stmt.setString(2, arriveDate);
                 stmt.setString(3, departDate);
+                stmt.setString(4, "user");
                 ResultSet rs = stmt.executeQuery();
                 // Display basic information about it
                 custViewBookingArrival.setText(arriveDate);
                 custViewBookingDepart.setText(departDate);
-                custViewBookingCost.setText("£" + rs.getLong(6));
-                int checkedIn = rs.getInt(7);
+                custViewBookingCost.setText("£" + rs.getLong(7));
+                int checkedIn = rs.getInt(8);
                 if (checkedIn == 0)
                     custViewBookingChecked.setText("No");
                 else if (checkedIn == 1)
@@ -88,7 +91,8 @@ public class ViewBookingController {
                 stmt.setInt(1, rs.getInt(2));
                 rs = stmt.executeQuery();
                 custViewBookingType.setText(rs.getString(3));
-                custViewBookingNumber.setText(String.valueOf(rs.getInt(2)));
+                roomNum = rs.getInt(2);
+                custViewBookingNumber.setText(String.valueOf(roomNum));
                 conn.close();
             }
             catch (Exception ex) {
@@ -110,10 +114,15 @@ public class ViewBookingController {
                     arriveDate = dropDownOption.substring(0,10);
                     departDate = dropDownOption.substring(dropDownOption.length() - 10);
                     // Delete the booking from the database
-                    PreparedStatement stmt = conn.prepareStatement("DELETE FROM bookings WHERE userId = ? AND timeOfStart = ? AND timeOfExit = ?");
+                    PreparedStatement stmt = conn.prepareStatement("DELETE FROM bookings WHERE userId = ? AND timeOfStart = ? AND timeOfExit = ? AND userType = ?");
                     stmt.setInt(1, customer.id);
                     stmt.setString(2, arriveDate);
                     stmt.setString(3, departDate);
+                    stmt.setString(4, "user");
+                    stmt.executeUpdate();
+                    // Update the room to not be booked anymore
+                    stmt = conn.prepareStatement("UPDATE rooms SET isBooked = 0 WHERE roomNum = ?");
+                    stmt.setInt(1, roomNum);
                     stmt.executeUpdate();
                     conn.close();
                     // Inform the user that the booking has been deleted
