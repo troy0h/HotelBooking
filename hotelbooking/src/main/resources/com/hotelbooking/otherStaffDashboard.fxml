@@ -33,14 +33,16 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.staff.otherDashboardController">
+<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.staff.otherStaffDashboardController">
 
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
@@ -50,7 +52,7 @@
                   <Image url="@images/background.png" />
                </image>
             </ImageView>
-            <Label layoutX="47.0" layoutY="34.0" text="Staff Dashboard">
+            <Label layoutX="47.0" layoutY="34.0" text="External Staff">
                <font>
                   <Font size="80.0" />
                </font>
@@ -60,7 +62,7 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="401.0" layoutY="623.0" mnemonicParsing="false" onAction="#custLoginGoBack" text="Log Out">
+            <Button fx:id="otherStaffLogOut" layoutX="655.0" layoutY="623.0" mnemonicParsing="false" onAction="#otherStaffLogOut" text="Log Out">
                <font>
                   <Font size="45.0" />
                </font>
@@ -70,6 +72,27 @@
                   <Font size="30.0" />
                </font>
             </Label>
+            <Label layoutX="90.0" layoutY="217.0" text="Select Booking">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="otherStaffViewBookingSelected" layoutX="399.0" layoutY="213.0" prefHeight="65.0" prefWidth="530.0" promptText="Booking..." stylesheets="@combo.css" />
+            <Button layoutX="142.0" layoutY="623.0" mnemonicParsing="false" onAction="#otherStaffViewBookingAdd" text="Add Cost To Account">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Button>
+            <Label layoutX="91.0" layoutY="313.0" text="Cost of Service">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <TextField fx:id="otherStaffViewBookingCost" layoutX="474.0" layoutY="300.0" prefHeight="84.0" prefWidth="380.0" promptText="Cost...">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </TextField>
          </children>
     </AnchorPane>
   </children>

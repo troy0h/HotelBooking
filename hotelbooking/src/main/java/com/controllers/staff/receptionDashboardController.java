@@ -40,7 +40,7 @@ public class receptionDashboardController {
     @FXML
     public void receptionDashboardExternalService() {
         try {
-            App.setRoot("staffExternalService");
+            App.setRoot("staffAddService");
         } 
         catch (Exception ex) {
             DialogBox.Exception(ex);

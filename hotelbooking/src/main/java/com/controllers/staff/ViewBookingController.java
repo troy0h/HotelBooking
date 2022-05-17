@@ -23,7 +23,6 @@ public class ViewBookingController {
     @FXML TextField         staffViewBookingChecked;
     @FXML TextField         staffViewBookingUser;
 
-    boolean     x = false;
     String      staffBooking = "";
     String      arriveDate = "";
     String      departDate = "";

@@ -29,7 +29,6 @@ public class LoginController {
         String PassHash = App.getSha256(staffLoginPassword.getText());
         staff.username = staffLoginUsername.getText();
         staff.password = PassHash;
-
         try {
             // Get the line where the username matches the username column
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM staff WHERE username = ?");
@@ -42,22 +41,21 @@ public class LoginController {
                 staff.staffType = rs.getString(4);
             }
             conn.close();
-
-            if (!dbPassword.equals(staff.password)){
-                // If the database password does not equal the hash, the password is incorrect
-                DialogBox.Error("Username or Password does not match");
-            }
-            else {
-                if (staff.staffType.equals("Receptionist"))
-                    App.setRoot("receptionDashboard");
-                else if (staff.staffType.equals("Bar Staff"))
-                    App.setRoot("otherStaffDashboard");
-                else
-                    App.setRoot("otherStaffDashboard");
-            }
         }
         catch (Exception ex) {
             DialogBox.Exception(ex);
+        }
+        if (!dbPassword.equals(staff.password)){
+            // If the database password does not equal the hash, the password is incorrect
+            DialogBox.Error("Username or Password does not match");
+        }
+        else {
+            if (staff.staffType.equals("Receptionist"))
+                changeToReception();
+            else if (staff.staffType.equals("Bar Staff") || staff.staffType.equals("Bar Staff"))
+                changeToOther();
+            else
+                DialogBox.Error("Something went wrong!");
         }
     }
 
@@ -66,6 +64,24 @@ public class LoginController {
     private void staffLoginGoBack() {
         try {
             App.setRoot("welcome");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
+    private void changeToReception() {
+        try {
+            App.setRoot("receptionDashboard");
+        } 
+        catch (Exception ex) {
+            DialogBox.Exception(ex);
+        }
+    }
+
+    private void changeToOther() {
+        try {
+            App.setRoot("otherStaffDashboard");
         } 
         catch (Exception ex) {
             DialogBox.Exception(ex);

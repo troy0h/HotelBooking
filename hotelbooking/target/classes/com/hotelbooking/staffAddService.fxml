@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.staff.otherStaffDashboardController">
+<VBox prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(to bottom left, #4791e6, #c146e3);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.staff.ExternalServiceController">
 
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="411.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
@@ -52,7 +52,7 @@
                   <Image url="@images/background.png" />
                </image>
             </ImageView>
-            <Label layoutX="47.0" layoutY="34.0" text="External Staff">
+            <Label layoutX="47.0" layoutY="34.0" text="Add External Service">
                <font>
                   <Font size="80.0" />
                </font>
@@ -62,23 +62,18 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="otherStaffLogOut" layoutX="655.0" layoutY="623.0" mnemonicParsing="false" onAction="#otherStaffLogOut" text="Log Out">
+            <Button fx:id="staffLogOut" layoutX="655.0" layoutY="623.0" mnemonicParsing="false" onAction="#staffLogOut" text="Go Back">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Label fx:id="otherStaffDashboardName" layoutX="47.0" layoutY="152.0" text="Welcome, [NAME]">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
             <Label layoutX="90.0" layoutY="217.0" text="Select Booking">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <ComboBox fx:id="otherStaffViewBookingSelected" layoutX="399.0" layoutY="213.0" prefHeight="65.0" prefWidth="530.0" promptText="Booking..." stylesheets="@combo.css" />
-            <Button layoutX="142.0" layoutY="623.0" mnemonicParsing="false" onAction="#otherStaffViewBookingAdd" text="Add Cost To Account">
+            <ComboBox fx:id="staffViewBookingSelected" layoutX="399.0" layoutY="213.0" prefHeight="65.0" prefWidth="530.0" promptText="Booking..." stylesheets="@combo.css" />
+            <Button layoutX="142.0" layoutY="623.0" mnemonicParsing="false" onAction="#staffViewBookingAdd" text="Add Cost To Account">
                <font>
                   <Font size="45.0" />
                </font>
@@ -88,7 +83,7 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <TextField fx:id="otherStaffViewBookingCost" layoutX="474.0" layoutY="300.0" prefHeight="84.0" prefWidth="380.0" promptText="Cost...">
+            <TextField fx:id="staffViewBookingCost" layoutX="474.0" layoutY="300.0" prefHeight="84.0" prefWidth="380.0" promptText="Cost...">
                <font>
                   <Font size="30.0" />
                </font>
