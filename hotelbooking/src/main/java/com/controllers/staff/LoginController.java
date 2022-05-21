@@ -52,7 +52,7 @@ public class LoginController {
         else {
             if (staff.staffType.equals("Receptionist"))
                 changeToReception();
-            else if (staff.staffType.equals("Bar Staff") || staff.staffType.equals("Bar Staff"))
+            else if (staff.staffType.equals("Bar Staff") || staff.staffType.equals("Restaraunt Staff"))
                 changeToOther();
             else
                 DialogBox.Error("Something went wrong!");

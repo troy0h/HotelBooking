@@ -35,14 +35,13 @@ public class SignupController {
     @FXML
     private void staffSignupSignup() {
         // Connect to the database
-        Connection conn = SqlConn.Connect();
         ResultSet rs;
         try {
+            Connection conn = SqlConn.Connect();
             // Check the username in the database
             PreparedStatement st = conn.prepareStatement("SELECT * FROM staff WHERE username=?");
             st.setString(1,staffSignupUsername.getText());
             rs = st.executeQuery();
-
             // Do some checks on the username
             boolean valid = (staffSignupUsername.getText() != null) && staffSignupUsername.getText().matches("[A-Za-z0-9_]+");
             // Check against the checks performed above
@@ -64,6 +63,7 @@ public class SignupController {
                 // Get the passwords' hash
                 String PassHash = App.getSha256(staffSignupPassword.getText());
                 try {
+                    conn = SqlConn.Connect();
                     // Prepare and execute an insert statement
                     PreparedStatement stmt = conn.prepareStatement("INSERT INTO staff (username, password, staffType) VALUES (?, ?, ?)");
                     stmt.setString(1, staffSignupUsername.getText());
@@ -74,19 +74,18 @@ public class SignupController {
                 }
                 catch (Exception ex) {
                     // If the database entry fails, close the connection and display an exception
-                    conn.close();
                     DialogBox.Exception(ex);
                 }
                 finally {
                     // If the database entry succeeds, tell the user, close the conenction, and return to the welcome screen
                     DialogBox.Info("Account created successfully");
-                    conn.close();
                     App.setRoot("welcome");
                     
                 }
             }
         }
         catch (Exception ex) {
+            // If the database entry fails, close the connection and display an exception
             DialogBox.Exception(ex);
         }
     }
